@@ -245,7 +245,7 @@ body::before{mix-blend-mode:overlay;opacity:.5}
 /* sections float as dark glass over the film; the hero and two "windows" show it in full */
 main>section,main>section.garage,main>section.live{background:rgba(13,11,10,.84);color:var(--ink)}
 .hero{background:linear-gradient(90deg,rgba(13,11,10,.82) 0%,rgba(13,11,10,.55) 45%,rgba(13,11,10,.1) 75%,rgba(13,11,10,0) 100%)}
-@media (max-width:860px){.hero{background:rgba(13,11,10,.7)}}
+@media (max-width:860px){.hero{background:linear-gradient(180deg,rgba(13,11,10,.72),rgba(13,11,10,.55) 60%,rgba(13,11,10,.35))}.hero .lede{text-shadow:0 1px 10px rgba(0,0,0,.85)}.window{height:min(55vh,26rem)}}
 .hero .wrap{min-height:min(88vh,52rem)}
 .hero h1{text-shadow:3px 2px 0 rgba(207,59,47,.75)}
 .hero h1 .y{color:var(--yellow);text-shadow:3px 2px 0 rgba(46,134,198,.9)}
@@ -525,11 +525,12 @@ $("lyr-close").onclick=()=>d.close();$("lyr-prev").onclick=()=>show(cur-1);$("ly
 d.addEventListener("click",e=>{if(e.target===d)d.close()});
 d.addEventListener("keydown",e=>{if(e.key==="ArrowRight")show(cur+1);if(e.key==="ArrowLeft")show(cur-1)});})();
 
-/* start the background clip only on larger screens, without reduced motion or data saver */
+/* start the background clip: a light square version on phones; skipped with reduced motion or data saver */
 (()=>{const v=document.getElementById("bgv");if(!v)return;
- const rm=matchMedia("(prefers-reduced-motion: reduce)").matches,small=matchMedia("(hover: none) and (max-width: 700px)").matches,save=navigator.connection&&navigator.connection.saveData;
- if(rm||small||save)return;
- const go=()=>{v.muted=true;v.src="img/bg-catch-my-drift.mp4";v.play().catch(()=>{})};
+ const rm=matchMedia("(prefers-reduced-motion: reduce)").matches,save=navigator.connection&&navigator.connection.saveData;
+ if(rm||save)return;
+ const small=matchMedia("(max-width: 700px)").matches;
+ const go=()=>{v.muted=true;v.src=small?"img/bg-catch-my-drift-mobile.mp4":"img/bg-catch-my-drift.mp4";v.play().catch(()=>{})};
  if(document.readyState==="complete")setTimeout(go,300);else addEventListener("load",()=>setTimeout(go,300));})();
 
 /* play videos and Spotify inside the page; nothing from YouTube or Spotify loads until someone clicks */
