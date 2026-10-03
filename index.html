@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>My Blue Van</title>
+<meta name="description" content="My Blue Van is a trio from Utrecht playing rhythm &amp; blues, funk and hip-hop. New album, videos, lyrics and live news.">
+<link rel="canonical" href="https://mybluevan.nl/">
+<meta name="theme-color" content="#16120f">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="My Blue Van">
+<meta property="og:title" content="My Blue Van">
+<meta property="og:description" content="Rhythm &amp; blues, funk and hip-hop from Utrecht.">
+<meta property="og:url" content="https://mybluevan.nl/">
+<meta property="og:image" content="https://mybluevan.nl/img/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="fonts/anton-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>html,body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<style>
+/* Layout: the site as a screen-printed poster series — grainy paper, flat ink colours from the album art, condensed caps with a hand script, colour-block strips as dividers. One committed paper look. */
+:root{
+  --paper:#e7e0d3; --paper-2:#dcd4c4; --ink:#2f2a24; --ink-soft:#5a5248;
+  --red:#cf3b2f; --blue:#2e86c6; --yellow:#efbf2c; --orange:#e2812f; --green:#2b9747;
+  --f-display:"Anton","Impact","Arial Narrow Bold",sans-serif;
+  --f-script:"Yellowtail","Brush Script MT",cursive;
+  --f-body:"Libre Franklin",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --wrap:74rem; color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{background:var(--paper);color:var(--ink);font:400 1.0625rem/1.6 var(--f-body);-webkit-font-smoothing:antialiased;position:relative}
+/* paper grain */
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opacity:.38;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .2 0 0 0 0 .17 0 0 0 0 .13 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+a{color:inherit}
+a:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+img{display:block;max-width:100%;height:auto}
+.wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:clamp(16px,4vw,36px)}
+h1,h2,h3{font-family:var(--f-display);font-weight:400;text-transform:uppercase;margin:0;line-height:.95;letter-spacing:.005em;text-wrap:balance}
+h2{font-size:clamp(2.6rem,7vw,5rem)}
+p{margin:0}
+.script{font-family:var(--f-script);font-weight:400;text-transform:none;letter-spacing:0}
+.lede{font-size:1.15rem;max-width:34rem}
+
+/* colour-block strip, from the left edge of the album cover */
+.strip{display:grid;grid-template-columns:3fr 1fr 2fr 1.2fr 4fr;height:14px}
+.strip i:nth-child(1){background:var(--blue)}.strip i:nth-child(2){background:var(--green)}.strip i:nth-child(3){background:var(--yellow)}.strip i:nth-child(4){background:var(--red)}.strip i:nth-child(5){background:var(--ink)}
+
+/* buttons: flat ink block with an off-register shadow */
+.btn{display:inline-flex;align-items:center;gap:.55rem;padding:.85rem 1.25rem;background:var(--ink);color:var(--paper);font:400 1.05rem/1 var(--f-display);text-transform:uppercase;letter-spacing:.04em;text-decoration:none;box-shadow:5px 5px 0 var(--red);transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--red)}
+.btn.alt{background:transparent;color:var(--ink);border:2.5px solid var(--ink);box-shadow:5px 5px 0 var(--blue)}
+.btn.alt:hover{box-shadow:7px 7px 0 var(--blue)}
+.row{display:flex;flex-wrap:wrap;gap:1rem}
+
+/* video background: the clip as it is, behind dark see-through panels */
+.bgvid{position:fixed;inset:0;z-index:0;pointer-events:none;background:#0d0b0a}
+.bgvid video{width:100%;height:100%;object-fit:cover}
+main>section.live{background:var(--ink)}
+header.hero,main,footer{position:relative;z-index:1}
+.poster{background:var(--paper)}
+
+/* nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--paper);border-bottom:2.5px solid var(--ink)}
+.nav .wrap{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding-block:.8rem}
+.mark{font:400 1.65rem/1 var(--f-display);text-transform:uppercase;text-decoration:none;letter-spacing:.01em}
+.nav ul{display:flex;gap:1.4rem;list-style:none;margin:0;padding:0;flex-wrap:wrap}
+.nav ul a{font:400 1rem/1 var(--f-display);text-transform:uppercase;letter-spacing:.06em;text-decoration:none}
+.nav ul a:hover{color:var(--red)}
+@media (max-width:620px){.nav ul li:nth-child(-n+2){display:none}.nav ul{gap:1rem}}
+
+/* hero */
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(2rem,5vw,4.5rem);align-items:center;padding-block:clamp(2.5rem,6vw,5rem)}
+@media (max-width:860px){.hero .wrap{grid-template-columns:1fr}}
+.hero-copy{display:grid;gap:1.4rem}
+.hero .script{font-size:clamp(2rem,4vw,2.8rem);color:var(--red);line-height:1;transform:rotate(-3deg);transform-origin:left;display:block}
+.hero h1{font-size:clamp(3.4rem,9vw,7.2rem);line-height:.9;text-shadow:3px 2px 0 rgba(46,134,198,.55)}
+.hero h1 .y{color:#1d5a92;text-shadow:3px 2px 0 rgba(239,191,44,.9)}
+.print{position:relative;justify-self:center;width:min(100%,32rem)}
+.print::before{content:"";position:absolute;inset:7% -5% -5% 7%;background:var(--blue)}
+.print img{position:relative;box-shadow:0 18px 30px -18px rgba(47,42,36,.6);transform:rotate(-1.5deg)}
+.print .tag{position:absolute;right:-.5rem;top:-1.2rem;z-index:2;font:400 1.6rem/1 var(--f-script);background:var(--yellow);padding:.5rem .9rem .6rem;transform:rotate(6deg);box-shadow:3px 3px 0 var(--ink)}
+
+section{padding-block:clamp(4rem,9vw,7rem)}
+
+/* album */
+.album{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(2rem,5vw,4rem);align-items:center}
+@media (max-width:860px){.album{grid-template-columns:1fr}}
+.album figure{margin:0;position:relative}
+.album figure img{border:2.5px solid var(--ink)}
+.album figure figcaption{position:absolute;left:1rem;bottom:1rem;background:var(--paper);border:2.5px solid var(--ink);padding:.35rem .7rem;font:400 1.35rem/1 var(--f-script)}
+.album-copy{display:grid;gap:1.4rem;min-width:0}
+.album-copy h2 .script{display:block;font-size:.5em;color:var(--green);margin-bottom:.2rem}
+.tracks{list-style:none;margin:0;padding:1.1rem 0;border-block:2.5px solid var(--ink);display:flex;flex-wrap:wrap;gap:.35rem 0;font:italic 700 clamp(1.05rem,2vw,1.3rem)/1.4 var(--f-body)}
+.tracks li:not(:last-child)::after{content:"•";margin-inline:.6rem;color:var(--red);font-style:normal}
+.tracks small{font-weight:500;color:var(--ink-soft)}
+
+/* lyrics */
+.trk{all:unset;cursor:pointer;border-bottom:2px solid transparent;transition:border-color .15s,color .15s}
+.trk:hover,.trk:focus-visible{border-color:var(--red);color:var(--red)}
+.trk:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+button.btn{border:0;cursor:pointer}
+button.btn.alt{border:2.5px solid var(--ink)}
+.lyr{width:min(56rem,calc(100vw - 32px));max-height:calc(100dvh - 48px);padding:0;border:2.5px solid var(--ink);background:var(--paper);color:var(--ink);box-shadow:9px 9px 0 var(--blue);overflow:hidden}
+.lyr[open]{display:grid;grid-template-rows:auto minmax(0,1fr) auto}
+.lyr::backdrop{background:rgba(47,42,36,.55)}
+.lyr header{display:flex;justify-content:space-between;align-items:start;gap:1rem;padding:1.25rem 1.5rem 1rem;border-bottom:2.5px solid var(--ink)}
+.lyr header .no{font:400 1.6rem/1 var(--f-script);color:var(--red);display:block;margin-bottom:.25rem}
+.lyr h3{font-size:clamp(2rem,5vw,3rem)}
+.lyr .x{all:unset;cursor:pointer;width:2.6rem;height:2.6rem;display:grid;place-items:center;border:2.5px solid var(--ink);font:400 1.3rem/1 var(--f-display);flex:none}
+.lyr .x:hover{background:var(--yellow)}
+.lyr .x:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.lyr .body{overflow:auto;padding:1.5rem;overscroll-behavior:contain}
+.lyr .text{white-space:pre-line;font-size:1.05rem;line-height:1.65;columns:2 18rem;column-gap:3rem;column-rule:1.5px solid var(--paper-2)}
+.lyr .empty{font:400 1.8rem/1.2 var(--f-script);color:var(--ink-soft)}
+.lyr footer{all:unset;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:1rem;padding:.9rem 1.5rem;border-top:2.5px solid var(--ink);background:var(--paper-2)}
+.lyr .nav-btn{all:unset;cursor:pointer;font:400 1rem/1.1 var(--f-display);text-transform:uppercase;letter-spacing:.03em}
+.lyr .nav-btn:hover{color:var(--red)}
+.lyr .nav-btn:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+.lyr .nav-btn[hidden]{display:none}
+.lyr .nxt{text-align:right;justify-self:end}
+.lyr .credit{font:400 1.2rem/1 var(--f-script);color:var(--ink-soft);white-space:nowrap}
+@media (max-width:560px){.lyr footer{grid-template-columns:1fr 1fr}.lyr .credit{display:none}}
+
+.credit-art{font:400 1.45rem/1 var(--f-script);color:var(--ink-soft)}
+.credit-art a{color:var(--ink);text-decoration-color:var(--red);text-underline-offset:4px}
+.credit-art a:hover{color:var(--red)}
+.fine a{color:inherit}
+.photo-credit{position:relative;z-index:1;margin-top:.9rem;text-align:right;font:400 1.35rem/1 var(--f-script);color:var(--ink-soft)}
+.photo-credit a{color:var(--ink);text-decoration-color:var(--red);text-underline-offset:4px}
+.photo-credit a:hover{color:var(--red)}
+/* garage */
+.garage{background:rgba(47,42,36,.06)}
+.g-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1fr) minmax(0,1fr);gap:clamp(1rem,3vw,2rem);align-items:start}
+@media (max-width:900px){.g-grid{grid-template-columns:1fr 1fr}.g-text{grid-column:1/-1;order:-1}}
+.g-grid img{border:2.5px solid var(--ink)}
+.g-tall{margin-top:3rem}
+.g-text{display:grid;gap:1.25rem;align-content:start}
+.g-text blockquote{margin:.5rem 0 0;font:400 clamp(2rem,4vw,2.8rem)/1.05 var(--f-script);color:var(--blue)}
+.g-text cite{display:block;font:400 .95rem/1 var(--f-display);text-transform:uppercase;letter-spacing:.06em;font-style:normal;color:var(--ink);margin-top:.6rem}
+
+/* band */
+.band-photo{position:relative;margin:0}
+.band-photo::before{content:"";position:absolute;inset:-12px 12px 12px -12px;background:var(--yellow);z-index:0}
+.band-photo img{position:relative;z-index:1;border:2.5px solid var(--ink);width:100%;aspect-ratio:16/9;object-fit:cover;object-position:50% 40%}
+.members{list-style:none;margin:2.5rem 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.5rem}
+@media (max-width:720px){.members{grid-template-columns:1fr}}
+.members li{display:grid;grid-template-columns:auto 1fr;gap:.2rem 1rem;align-items:center}
+.members .dot{grid-row:span 2;width:3rem;height:3rem;border-radius:50%;border:2.5px solid var(--ink)}
+.members li:nth-child(1) .dot{background:var(--red)}
+.members li:nth-child(2) .dot{background:var(--blue)}
+.members li:nth-child(3) .dot{background:var(--yellow)}
+.members b{font:400 1.7rem/1 var(--f-display);text-transform:uppercase}
+.members span{font:400 1.3rem/1 var(--f-script);color:var(--ink-soft)}
+.bio{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:2rem;margin-top:2.5rem}
+@media (max-width:720px){.bio{grid-template-columns:1fr}}
+.disco{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:2.5px solid var(--ink)}
+.disco li{padding:.8rem;border-right:2.5px solid var(--ink);display:grid;gap:.4rem;align-content:space-between;min-height:7.5rem}
+.disco li:last-child{border-right:0;background:var(--red);color:var(--paper)}
+.disco b{font:400 1.25rem/1 var(--f-display);text-transform:uppercase}
+.disco span{font:400 1.4rem/1 var(--f-script)}
+@media (max-width:520px){.disco{grid-template-columns:1fr 1fr}.disco li:nth-child(2){border-right:0}.disco li:nth-child(-n+2){border-bottom:2.5px solid var(--ink)}}
+
+/* earlier records */
+.records{border-top:2.5px solid var(--ink)}
+.records h2{margin-bottom:2.5rem}
+.recs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(1.5rem,3vw,2.5rem)}
+@media (max-width:1000px){.recs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.recs{grid-template-columns:1fr}.rec{grid-template-columns:minmax(0,10rem) minmax(0,1fr)!important}}
+@media (max-width:480px){.rec{grid-template-columns:1fr!important}}
+.rec{display:grid;grid-template-columns:1fr;gap:1.1rem;align-content:start}
+.cv{position:relative;aspect-ratio:1;max-width:100%;background:var(--c);border:2.5px solid var(--ink);box-shadow:6px 6px 0 var(--ink);display:grid;place-items:end start;padding:1rem;overflow:hidden}
+.cv span{font:400 clamp(1.6rem,3vw,2.2rem)/.95 var(--f-display);text-transform:uppercase;color:var(--paper)}
+.cv img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.rec-t{display:grid;gap:.55rem;align-content:start;min-width:0}
+.rec .yr{font:400 1.7rem/1 var(--f-script);color:var(--red)}
+.rec h3{font-size:clamp(1.8rem,3vw,2.3rem)}
+.rec h3 .ep{font:400 1.4rem/1 var(--f-script);text-transform:none;color:var(--ink-soft)}
+.rec .meta{font-size:.9rem;color:var(--ink-soft)}
+.rec .more{font:400 1rem/1 var(--f-display);text-transform:uppercase;letter-spacing:.04em;text-decoration:none;justify-self:start;border-bottom:2.5px solid var(--red);padding-bottom:.2rem;margin-top:.3rem}
+.rec .more:hover{color:var(--red)}
+.press{list-style:none;margin:clamp(3rem,6vw,4.5rem) 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.25rem}
+@media (max-width:900px){.press{grid-template-columns:1fr}}
+.press li{display:grid}
+.press a{border:2.5px solid var(--ink);border-top:12px solid var(--c);padding:1.25rem;display:grid;gap:.9rem;align-content:space-between;background:var(--paper);text-decoration:none;transition:transform .15s,box-shadow .15s}
+.press a:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+.press a:hover cite{color:var(--red)}
+.press q{font:400 clamp(1.5rem,2.4vw,1.9rem)/1.15 var(--f-script);quotes:"“" "”"}
+.press cite{font:400 .95rem/1 var(--f-display);text-transform:uppercase;letter-spacing:.05em;font-style:normal}
+
+/* live */
+.live{background:var(--ink);color:var(--paper)}
+.live .head{display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:1rem;margin-bottom:2rem}
+.live h2 .script{color:var(--yellow);font-size:.55em;display:block}
+.mosaic{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:minmax(0,auto);gap:12px}
+.mosaic img{width:100%;height:100%;object-fit:cover;aspect-ratio:1}
+.mosaic .big{grid-column:span 2;grid-row:span 2}
+@media (max-width:720px){.mosaic{grid-template-columns:1fr 1fr}}
+
+/* videos */
+.vhead{display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:1rem;margin-bottom:2rem}
+.vids{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.25rem}
+@media (max-width:900px){.vids{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.vids{grid-template-columns:1fr}}
+.vid{text-decoration:none;display:grid;gap:.6rem}
+.vid .scr{aspect-ratio:16/9;max-width:100%;border:2.5px solid var(--ink);display:grid;place-items:center;position:relative;overflow:hidden;transition:transform .15s,box-shadow .15s}
+.vid:hover .scr{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+.vid .scr img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.vid .pl{position:relative;box-shadow:3px 3px 0 var(--ink);transition:background .15s;width:3.2rem;height:3.2rem;border-radius:50%;background:var(--paper);border:2.5px solid var(--ink);display:grid;place-items:center}
+.vid:nth-child(5n+2) .scr{background:var(--blue)}.vid:nth-child(5n+3) .scr{background:var(--yellow)}.vid:nth-child(5n+4) .scr{background:var(--green)}.vid:nth-child(5n+5) .scr{background:var(--red)}.vid:nth-child(5n+1) .scr{background:var(--orange)}
+.vid:hover .pl{background:var(--yellow)}
+.vid b{font:400 1.3rem/1.05 var(--f-display);text-transform:uppercase}
+.vid span{font-size:.92rem;color:var(--ink-soft)}
+
+/* shows: styled after the instore-tour poster */
+.poster{display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(1.5rem,5vw,4rem);align-items:center;border:2.5px solid var(--ink);padding:clamp(1rem,3vw,2rem) clamp(1rem,4vw,3rem) clamp(1rem,3vw,2rem) 0;overflow:hidden}
+.poster .face{width:clamp(7rem,18vw,13rem);mix-blend-mode:multiply}
+.poster h2{font-size:clamp(2.4rem,6vw,4.4rem)}
+.poster h2 .script{display:block;font-size:.62em;text-transform:none;margin-top:.1rem}
+.dates{list-style:none;margin:1.25rem 0 0;padding:0;display:grid;gap:.3rem;font:400 clamp(1.5rem,3.4vw,2.3rem)/1.15 var(--f-script)}
+.dates time{font-variant-numeric:tabular-nums;margin-right:.6rem}
+.dates .next{color:var(--red)}
+.poster p{margin-top:1.25rem;max-width:30rem}
+@media (max-width:560px){.poster{grid-template-columns:1fr;padding:1.25rem}.poster .face{display:none}}
+
+/* footer */
+footer{background:var(--ink);color:var(--paper)}
+footer .wrap{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2rem;align-items:end;padding-block:4.5rem 2.5rem}
+@media (max-width:720px){footer .wrap{grid-template-columns:1fr}}
+footer h2{font-size:clamp(2.6rem,7vw,5.2rem)}
+footer h2 .script{display:block;color:var(--yellow);font-size:.5em;text-transform:none}
+footer .btn{background:var(--paper);color:var(--ink);box-shadow:5px 5px 0 var(--red)}
+.rings{width:clamp(7rem,14vw,10rem);height:auto}
+.fine{grid-column:1/-1;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;border-top:1.5px solid rgba(231,224,211,.3);padding-top:1.25rem;font-size:.9rem;opacity:.8}
+
+/* ===== clip theme: dark ground so the video can play in full colour ===== */
+:root{--paper:#16120f;--paper-2:#1f1a16;--ink:#efe8dc;--ink-soft:#c2b8aa;--blue:#4b9fdc;--red:#ec5a4c;color-scheme:dark}
+body{background:#0d0b0a}
+body::before{mix-blend-mode:overlay;opacity:.5}
+/* sections float as dark glass over the film; the hero and two "windows" show it in full */
+main>section,main>section.garage,main>section.live{background:rgba(13,11,10,.84);color:var(--ink)}
+.hero{background:linear-gradient(90deg,rgba(13,11,10,.82) 0%,rgba(13,11,10,.55) 45%,rgba(13,11,10,.1) 75%,rgba(13,11,10,0) 100%)}
+@media (max-width:860px){.hero{background:rgba(13,11,10,.7)}}
+.hero .wrap{min-height:min(88vh,52rem)}
+.hero h1{text-shadow:3px 2px 0 rgba(207,59,47,.75)}
+.hero h1 .y{color:var(--yellow);text-shadow:3px 2px 0 rgba(46,134,198,.9)}
+.hero .lede{color:#f4eee4}
+.window{height:min(70vh,36rem);position:relative;z-index:1}
+.nav{background:rgba(13,11,10,.92)}
+footer{background:rgba(13,11,10,.94);color:var(--ink)}
+.strip i:nth-child(5){background:#0d0b0a}
+.print .tag{color:#2f2a24}
+.live .btn{background:var(--ink)!important;color:#16120f!important}
+/* printed objects keep the light paper look */
+.poster,.press a,.lyr{--paper:#e7e0d3;--paper-2:#dcd4c4;--ink:#2f2a24;--ink-soft:#5a5248;--blue:#2e86c6;color:var(--ink);background:var(--paper)}
+.poster .face{mix-blend-mode:multiply}
+
+/* in-page players */
+.vbox{width:min(64rem,calc(100vw - 32px))}
+.vbox .frame{aspect-ratio:16/9;background:#000;max-width:100%}
+.vbox .frame iframe,.sp iframe{display:block;width:100%;height:100%;border:0}
+.vbox footer a.nav-btn{text-decoration:none}
+.sp{border:2.5px solid var(--ink);box-shadow:6px 6px 0 var(--green);height:352px;max-width:100%;background:#121212}
+
+.solo{margin-top:2.5rem;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:1.25rem;align-items:center;padding:1.1rem 1.4rem;border:2.5px solid var(--ink);border-left:14px solid var(--yellow);text-decoration:none;transition:transform .15s,box-shadow .15s}
+.solo:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--red)}
+.solo-k{font:400 1.8rem/1 var(--f-script);color:var(--red)}
+.solo-t{display:grid;gap:.2rem}
+.solo-t b{font:400 1.6rem/1 var(--f-display);text-transform:uppercase}
+.solo-t span{color:var(--ink-soft)}
+.solo-go{font:400 1rem/1 var(--f-display);text-transform:uppercase;letter-spacing:.05em;border-bottom:2.5px solid var(--red);padding-bottom:.2rem}
+@media (max-width:600px){.solo{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav class="nav" aria-label="Main">
+  <div class="wrap">
+    <a class="mark" href="#">My Blue Van</a>
+    <ul><li><a href="#album">Album</a></li><li><a href="#band">Band</a></li><li><a href="#videos">Videos</a></li><li><a href="#shows">Shows</a></li></ul>
+  </div>
+</nav>
+
+<div class="bgvid" aria-hidden="true"><video id="bgv" muted loop playsinline preload="none" poster="img/bg-poster.jpg"></video></div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-copy">
+      <h1>Rhythm &amp; blues, funk &amp; <span class="y">hip-hop</span></h1>
+      <p class="lede">We are a trio who love a heavy groove and an honest song. Our fourth album was written, played and recorded by the three of us, at home.</p>
+      <div class="row">
+        <a class="btn" href="https://open.spotify.com/artist/2YUF5cDrVfW2CmbErAtqaV" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6 4v16l14-8z"/></svg>Listen on Spotify</a>
+        <a class="btn alt" href="https://smarturl.it/mybluevan" target="_blank" rel="noopener">Get the record</a>
+      </div>
+    </div>
+    <div class="print">
+      <img src="img/album-cover-new.jpg" width="900" height="900" alt="Album cover of My Blue Van: an illustrated red hand holding stones, a face in profile, linked yellow rings">
+      <span class="tag">out now!</span>
+    </div>
+  </div>
+  <div class="strip" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+</header>
+
+<main>
+  <section id="album">
+    <div class="wrap album">
+      <figure>
+        <img src="img/vinyl.jpg" width="745" height="745" alt="The My Blue Van record on green vinyl, sleeve leaning behind it" loading="lazy">
+        <figcaption>on green vinyl</figcaption>
+      </figure>
+      <div class="album-copy">
+        <h2>My Blue Van</h2>
+        <p class="lede">No producer and no studio this time. We set up in our own garage and recorded every note ourselves. Songs about love, friendship and being human.</p>
+        <ol class="tracks">
+          <li><button type="button" class="trk" data-i="0">Me &amp; You</button></li><li><button type="button" class="trk" data-i="1">Ecstasy</button></li><li><button type="button" class="trk" data-i="2">Gangsterblues in Bes</button></li><li><button type="button" class="trk" data-i="3">All There is (Executioner)</button></li><li><button type="button" class="trk" data-i="4">Catch my Drift</button></li><li><button type="button" class="trk" data-i="5">Not Easy to Lie</button></li><li><button type="button" class="trk" data-i="6">Say What You Want</button></li><li><button type="button" class="trk" data-i="7">Oh My</button></li><li><button type="button" class="trk" data-i="8">Linger</button></li><li><button type="button" class="trk" data-i="9">There She Goes <small>feat. Bec Plexus</small></button></li>
+        </ol>
+        <p class="credit-art">Artwork by <a href="https://www.yonil.com/" target="_blank" rel="noopener">YONIL</a></p>
+        <div class="row"><a class="btn" href="https://smarturl.it/mybluevan" target="_blank" rel="noopener">Stream or buy</a><button type="button" class="btn alt" data-i="0" id="open-lyrics">Read the lyrics</button><button type="button" class="btn alt" id="sp-open">Play it here</button></div>
+        <div class="sp" id="sp" hidden></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="garage">
+    <div class="wrap g-grid">
+      <img class="g-tall" src="img/garage.jpg" width="700" height="1244" alt="Overhead view of the band recording in the garage, surrounded by amps and keyboards" loading="lazy">
+      <img src="img/garage-2.jpg" width="763" height="763" alt="Rehearsing in a wooden garage with the door open" loading="lazy">
+      <div class="g-text">
+        <h2>Made at home</h2>
+        <p>It started with a jam session outside a student house in Utrecht, with an old blue van parked across the street. Three albums later, after <i>Robot</i> at Kytopia, we went back to where we began: our own space, our own gear and no clock running.</p>
+        <blockquote>“We have really found our sound on this record.”<cite>Bas Beenackers</cite></blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section id="band">
+    <div class="wrap">
+      <figure class="band-photo"><img src="img/band.jpg" width="1400" height="1400" alt="The three members of My Blue Van" loading="lazy"><figcaption class="photo-credit">Photo by <a href="https://www.instagram.com/gestaltes/" target="_blank" rel="noopener">Gestaltes</a></figcaption></figure>
+      <ul class="members">
+        <li><i class="dot"></i><b>Dennis Wechgelaar</b><span>drums</span></li>
+        <li><i class="dot"></i><b>Johan van Bussel</b><span>bass</span></li>
+        <li><i class="dot"></i><b>Bas Beenackers</b><span>vocals &amp; guitar</span></li>
+      </ul>
+      <div class="bio">
+        <p class="lede">A Utrecht trio playing since the student-house days. Four albums in, we still record, mix and make our own videos.</p>
+      </div>
+      <a class="solo" href="https://www.basbeenackersmusic.com/" target="_blank" rel="noopener">
+        <span class="solo-k">solo</span>
+        <span class="solo-t"><b>Bas Beenackers</b><span>Bas also writes and releases songs under his own name.</span></span>
+        <span class="solo-go">Listen ↗</span>
+      </a>
+    </div>
+  </section>
+
+  <section id="records" class="records">
+    <div class="wrap">
+      <h2>More records</h2>
+      <div class="recs">
+        <article class="rec">
+          <div class="cv" style="--c:var(--red)"><span>Circus</span><img src="img/cover-circus.jpg" width="600" height="600" alt="Cover of the Circus EP" loading="lazy" onerror="this.remove()"></div>
+          <div class="rec-t">
+            <span class="yr">2024</span>
+            <h3>Circus <small class="ep">EP</small></h3>
+            <p>Music for a show about falling. We wrote it for <i>MAT</i>, a circus performance by TENT in which seven acrobats tumble, crash onto mats, miss and get back up again, with our songs carrying them along.</p>
+            <p class="meta">“Als je niet hoeft te landen, kan iedereen vliegen.”</p>
+            <a class="more" href="https://tent.eu/onze-voorstellingen/mat" target="_blank" rel="noopener">See the show →</a>
+          </div>
+        </article>
+        <article class="rec">
+          <div class="cv" style="--c:var(--blue)"><span>Robot</span><img src="img/cover-robot.jpg" width="600" height="600" alt="Album cover of Robot" loading="lazy" onerror="this.remove()"></div>
+          <div class="rec-t">
+            <span class="yr">2017</span>
+            <h3>Robot</h3>
+            <p>Our third album, recorded at the Epic Rainbow Unicorn Studio in Kytopia, Utrecht. Ten tracks of raw, grinding blues and garage rock, including <i>Dull Blast</i> and <i>I Gotta Move</i>.</p>
+            <p class="meta">CD &amp; vinyl · artwork by Niels van der Wegen</p>
+            <a class="more" href="https://www.youtube.com/watch?v=hmybfKllvOs" target="_blank" rel="noopener">Watch the Robot video →</a>
+          </div>
+        </article>
+        <article class="rec">
+          <div class="cv" style="--c:var(--green)"><span>Hush</span><img src="img/cover-hush.jpg" width="600" height="600" alt="Album cover of Hush" loading="lazy" onerror="this.remove()"></div>
+          <div class="rec-t">
+            <span class="yr">2015</span>
+            <h3>Hush</h3>
+            <p>Fourteen songs recorded at Barn in the Meadow in Benschop. Our most introspective record, each song with its own story.</p>
+            <p class="meta">Cover by Niels van der Wegen</p>
+            <a class="more" href="https://www.youtube.com/watch?v=rz7NytBssQ8" target="_blank" rel="noopener">Watch the single →</a>
+          </div>
+        </article>
+        <article class="rec">
+          <div class="cv" style="--c:var(--orange)"><span>As Colours Change</span><img src="img/cover-as-colours-change.jpg" width="600" height="600" alt="Album cover of As Colours Change" loading="lazy" onerror="this.remove()"></div>
+          <div class="rec-t">
+            <span class="yr">2013</span>
+            <h3>As Colours Change</h3>
+            <p>Our debut, also recorded at Barn in the Meadow. A year later we reached the final of the Grote Prijs van Nederland.</p>
+            <a class="more" href="https://www.youtube.com/watch?v=O13e-5yYEyE" target="_blank" rel="noopener">Watch Bumpy Road →</a>
+          </div>
+        </article>
+      </div>
+      <ul class="press" aria-label="Press">
+        <li style="--c:var(--red)"><a href="https://popronde.nl/profiel/5839" target="_blank" rel="noopener"><q>Dit drietal weet precies hoe soulvolle bluesrock moet klinken.</q><cite>3voor12 Utrecht, via Popronde ↗</cite></a></li>
+        <li style="--c:var(--yellow)"><a href="https://maxazine.nl/?p=160909" target="_blank" rel="noopener"><q>Een prachtig album, met 14 nummers die elk hun eigen verhaal vertellen.</q><cite>Maxazine over Hush · 8/10 ↗</cite></a></li>
+        <li style="--c:var(--blue)"><a href="https://www.vpro.nl/vrije-geluiden/artikelen/my-blue-van" target="_blank" rel="noopener"><q>Schurende bluesgaragerock uit Utrecht.</q><cite>VPRO Vrije Geluiden ↗</cite></a></li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="window" aria-hidden="true"></div>
+  <section class="live">
+    <div class="wrap">
+      <div class="head"><h2>Live</h2><a class="btn" style="background:var(--paper);color:var(--ink)" href="https://www.instagram.com/mybluevan.band/" target="_blank" rel="noopener">More on Instagram</a></div>
+      <div class="mosaic">
+        <img class="big" src="img/stage.jpg?v=2" width="824" height="824" alt="The band on a big stage with the album artwork projected behind them" loading="lazy">
+        <img src="img/live-1.jpg" width="800" height="804" alt="Guitarist in front of swirling projected light" loading="lazy">
+        <img src="img/live-2.jpg" width="800" height="804" alt="Singer and guitarist mid-shout under coloured lights" loading="lazy">
+        <img src="img/live-3.jpg" width="800" height="800" alt="Guitarist bent over his guitar with liquid light projections" loading="lazy">
+        <img src="img/live-4.jpg" width="800" height="804" alt="Drummer behind his kit in a wash of projected colour" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <section id="videos">
+    <div class="wrap">
+      <div class="vhead"><h2>Videos</h2><a class="btn alt" href="https://www.youtube.com/channel/UCMec_Rc1L1QiC-Qjt76k2sg" target="_blank" rel="noopener">YouTube channel</a></div>
+      <div class="vids" id="vids"></div>
+    </div>
+  </section>
+
+  <div class="window" aria-hidden="true"></div>
+  <section id="shows">
+    <div class="wrap">
+      <div class="poster">
+        <img class="face" src="img/face.jpg" width="324" height="1080" alt="" loading="lazy">
+        <div>
+          <h2>My Blue Van<span class="script">live dates</span></h2>
+          <ul class="dates">
+            <li class="next">no live shows planned right now</li>
+          </ul>
+          <p>New dates are announced on Instagram first. Want us at your venue or festival? Send us a message.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div style="display:grid;gap:1.5rem">
+      <h2>Get in touch</h2>
+      <div class="row">
+        <a class="btn" href="https://www.instagram.com/mybluevan.band/" target="_blank" rel="noopener">Instagram</a>
+        <a class="btn" href="https://www.facebook.com/mybluevanmusic/" target="_blank" rel="noopener">Facebook</a>
+        <a class="btn" href="https://www.youtube.com/channel/UCMec_Rc1L1QiC-Qjt76k2sg" target="_blank" rel="noopener">YouTube</a>
+        <a class="btn" href="https://open.spotify.com/artist/2YUF5cDrVfW2CmbErAtqaV" target="_blank" rel="noopener">Spotify</a>
+      </div>
+    </div>
+    <svg class="rings" viewBox="0 0 120 200" aria-hidden="true">
+      <g fill="none" stroke-width="12">
+        <circle cx="60" cy="150" r="34" stroke="#efbf2c"/>
+        <circle cx="60" cy="100" r="34" stroke="#e2812f"/>
+        <circle cx="60" cy="50" r="34" stroke="#cf3b2f"/>
+      </g>
+    </svg>
+    <div class="fine"><span>© My Blue Van · Utrecht</span><span>All lyrics by Bas Beenackers · Album artwork by <a href="https://www.yonil.com/" target="_blank" rel="noopener">YONIL</a></span></div>
+  </div>
+</footer>
+
+<dialog class="lyr" id="lyr" aria-labelledby="lyr-title">
+  <header>
+    <div><span class="no" id="lyr-no"></span><h3 id="lyr-title"></h3></div>
+    <button type="button" class="x" id="lyr-close" aria-label="Close lyrics">✕</button>
+  </header>
+  <div class="body" id="lyr-body"></div>
+  <footer>
+    <button type="button" class="nav-btn" id="lyr-prev"></button>
+    <span class="credit">lyrics by Bas Beenackers</span>
+    <button type="button" class="nav-btn nxt" id="lyr-next"></button>
+  </footer>
+</dialog>
+<dialog class="lyr vbox" id="vbox" aria-labelledby="vbox-title">
+  <header>
+    <div><span class="no">video</span><h3 id="vbox-title"></h3></div>
+    <button type="button" class="x" id="vbox-close" aria-label="Close video">✕</button>
+  </header>
+  <div class="frame" id="vbox-frame"></div>
+  <footer>
+    <span></span><span class="credit">plays via YouTube</span>
+    <a class="nav-btn nxt" id="vbox-yt" href="#" target="_blank" rel="noopener">Open on YouTube ↗</a>
+  </footer>
+</dialog>
+<script src="lyrics.js"></script>
+
+<script>
+const videos=[["zk5zHDWc7yw","Me & You","Official video"],["nrentR_Kvsg","Better Believe","Soundtrack for PIT by TENT"],["hmybfKllvOs","Robot","Official video"],["_mcX4rBcaxk","Recording Robot","Documentary clip, Kytopia"],["rz7NytBssQ8","25 Nights and Days","Official video"],["tAfj_6hz-74","I Gotta Move","Live at Vrije Geluiden"],["fQ_5ZkxjOAw","Dull Blast","Shed session at HQ"],["O13e-5yYEyE","Bumpy Road","Official video"]];
+const esc=s=>s.replace(/&/g,"&amp;");
+const pl='<span class="pl"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6 4v16l14-8z"/></svg></span>';
+document.getElementById("vids").innerHTML=videos.map(([id,t,s,img])=>`<a class="vid" data-yt="${id}" data-t="${esc(t)}" href="https://www.youtube.com/watch?v=${id}" target="_blank" rel="noopener"><div class="scr"><img src="img/yt-${id}.jpg" width="800" height="450" alt="" loading="lazy" onerror="this.remove()">${pl}</div><b>${esc(t)}</b><span>${s}</span></a>`).join("");
+
+/* lyrics dialog — text lives in lyrics.js */
+(()=>{const songs=["Me & You","Ecstasy","Gangsterblues in Bes","All There is (Executioner)","Catch my Drift","Not Easy to Lie","Say What You Want","Oh My","Linger","There She Goes"];
+const L=window.LYRICS||{};
+const norm=x=>x.toLowerCase().replace(/&/g,"and").replace(/[^a-z0-9]/g,"");
+if(window.LYRICS_TXT&&window.LYRICS_TXT.trim()){const keys=songs.map(norm);let at=null;const buf={};
+ const lines=window.LYRICS_TXT.split(/\r?\n/);const numRe=/^\s*\d+\s*[.)]\s+\S/;const numbered=lines.filter(l=>numRe.test(l)).length>=3;
+ for(const line of lines){let k=-1;if(!numbered||numRe.test(line)){const n=norm(line.replace(/^\s*\d+\s*[.)]?\s*/,""));k=n?keys.findIndex(x=>n===x||(n.startsWith(x)&&n.length<x.length+20)):-1}
+  if(k>-1&&!buf[songs[k]]){at=songs[k];buf[at]=[];continue}
+  if(at&&!/^\s*all lyrics by/i.test(line))buf[at].push(line)}
+ for(const t in buf){if(L[t])continue;let x=buf[t].join("\n").replace(/[ \t]+$/gm,"").trim();
+  const ls=x.split("\n"),filled=ls.filter(l=>l.trim()).length,blank=ls.length-filled;
+  if(blank>=filled*0.7)x=x.replace(/\n\s*\n/g,"\n"); /* pasted page puts a blank line after every line: tighten it */
+  L[t]=x.replace(/\n{3,}/g,"\n\n")}}const d=document.getElementById("lyr");let cur=0;
+const $=id=>document.getElementById(id);
+function show(i){cur=(i+songs.length)%songs.length;const t=songs[cur];
+ $("lyr-no").textContent="track "+(cur+1)+" of "+songs.length;$("lyr-title").textContent=t;
+ const txt=(L[t]||"").trim();const b=$("lyr-body");b.scrollTop=0;
+ b.innerHTML="";const el=document.createElement("div");
+ if(txt){el.className="text";el.textContent=txt}else{el.className="empty";el.textContent="Lyrics for this song are coming soon."}
+ b.appendChild(el);
+ const p=$("lyr-prev"),n=$("lyr-next");p.textContent="← "+songs[(cur+songs.length-1)%songs.length];n.textContent=songs[(cur+1)%songs.length]+" →";}
+document.querySelectorAll("[data-i]").forEach(el=>el.addEventListener("click",()=>{show(+el.dataset.i);if(!d.open)d.showModal()}));
+$("lyr-close").onclick=()=>d.close();$("lyr-prev").onclick=()=>show(cur-1);$("lyr-next").onclick=()=>show(cur+1);
+d.addEventListener("click",e=>{if(e.target===d)d.close()});
+d.addEventListener("keydown",e=>{if(e.key==="ArrowRight")show(cur+1);if(e.key==="ArrowLeft")show(cur-1)});})();
+
+/* start the background clip only on larger screens, without reduced motion or data saver */
+(()=>{const v=document.getElementById("bgv");if(!v)return;
+ const rm=matchMedia("(prefers-reduced-motion: reduce)").matches,small=matchMedia("(hover: none) and (max-width: 700px)").matches,save=navigator.connection&&navigator.connection.saveData;
+ if(rm||small||save)return;
+ const go=()=>{v.muted=true;v.src="img/bg-catch-my-drift.mp4";v.play().catch(()=>{})};
+ if(document.readyState==="complete")setTimeout(go,300);else addEventListener("load",()=>setTimeout(go,300));})();
+
+/* play videos and Spotify inside the page; nothing from YouTube or Spotify loads until someone clicks */
+(()=>{const vb=document.getElementById("vbox"),fr=document.getElementById("vbox-frame");
+ document.getElementById("vids").addEventListener("click",e=>{const a=e.target.closest("a.vid");if(!a||!vb.showModal)return;e.preventDefault();
+  document.getElementById("vbox-title").textContent=a.dataset.t.replace(/&amp;/g,"&");document.getElementById("vbox-yt").href=a.href;
+  fr.innerHTML=`<iframe src="https://www.youtube-nocookie.com/embed/${a.dataset.yt}?autoplay=1&rel=0" title="${a.dataset.t}" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`;
+  vb.showModal()});
+ const close=()=>vb.close();document.getElementById("vbox-close").onclick=close;vb.addEventListener("click",e=>{if(e.target===vb)close()});
+ vb.addEventListener("close",()=>{fr.innerHTML=""});
+ const sb=document.getElementById("sp-open"),sp=document.getElementById("sp");
+ sb.addEventListener("click",()=>{if(!sp.hidden){sp.hidden=true;sp.innerHTML="";sb.textContent="Play it here";return}
+  sp.innerHTML='<iframe src="https://open.spotify.com/embed/artist/2YUF5cDrVfW2CmbErAtqaV?theme=0" title="My Blue Van on Spotify" height="352" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>';
+  sp.hidden=false;sb.textContent="Close player"});})();
+</script>
+</body>
+</html>
